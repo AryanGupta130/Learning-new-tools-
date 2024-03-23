@@ -48,4 +48,56 @@ print(data)
 print("...")
 print(data[names == 'Aryan'])
 
+## lets go over fancy indexing
+arr = np.arange(32).reshape((8,4))
+print(arr)
+print('...')
+print(arr[[1,3,5],[2,0,1]] )
+print("...")
+print(arr[[1,2,5, 3]][:, [1,3,0,2]])
+print("...")
+
+## transpose of an array
+## this is done through the t function
+arr = np.arange(32).reshape((8,4))
+arr_t = arr.T
+x = np.dot(arr_t, arr)
+arr = np.arange(32).reshape(2,4,4)
+
+print(arr)
+print('...')
+
+## using a tuple like this on the numpy arrays will restructure the arrays such that the first and second dimesnsion switched
+print(arr.transpose(1,0,2))
+
+
+## whenever wanting to do any data-processing numpy is a great tool as it will save alot of time compared to python
+## vectorization allows you to perform a task on every value in an array
+
+print("lets look at some data processing")
+point = np.arange(-5, 5, .01)
+print(point)
+print("...")
+
+## meshgrid is used to create coordinate systems for various mathematical computation
+xs, ys = np.meshgrid(point, point)
+print(xs)
+print("....")
+
+
+
+## we can do conditional statements in python through the where function
+randomm = np.random.randn(4,4)
+print(randomm)
+## we can use the where function to replace all positive value with positive 2
+new = np.where(randomm > 0, 2, -2)
+print(new)
+
+## difference between the any and all fucntion
+bools = np.array([True, False, True, True, False, False])
+print(bools.any) # this will check if any of the bools are true
+print("...")
+print(bools.all) # this will check if any of the bools are false
+
+
 
