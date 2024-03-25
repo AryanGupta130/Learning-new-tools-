@@ -13,4 +13,11 @@ the stock market. Some aspects will be calculated will be:
     
 4) As this project grows, I can include more important information. I hope to expand upon this with information regarding options trading and options strategies
 
+5) Stock Market Game:
+
+# End Goal: 
+Develop an interactive game that simulates stock market trading using real-time or historical data from the Alpha Vantage API.
+Allow users to create virtual portfolios, buy and sell stocks, and compete with friends or other players to see who can achieve the highest returns within a set timeframe.
+Incorporate gamification elements such as leaderboards, achievements, and rewards to incentivize user engagement and learning.
+
 
