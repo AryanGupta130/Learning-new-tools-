@@ -1,22 +1,45 @@
 import requests
 import numpy as np
 import os
-from helperfunctions import calculate_percentChange_24hours, plot_candlestick_chart
+from datetime import datetime, date
+from helperfunctions import calculate_percentChange_24hours, plot_candlestick_chart, plot_candlestick_chart_12
 
 
-#may need to change
 symbol = input("Enter the Ticker Symbol Please: ")
-
 
 ##this is going to be the API key and information for the twelve data
 twelve_api_key = os.environ.get('twelve_api_key')
 
-url_12 = f'https://api.twelvedata.com/time_series?symbol={symbol}&interval=1min&apikey=f8c1dda7c05943328c8b314d4f8ea656'
+url_12 = f'https://api.twelvedata.com/time_series?symbol={symbol}&interval=15min&apikey=f8c1dda7c05943328c8b314d4f8ea656'
 x = requests.get(url_12)
 data_12 = x.json()
 
+for entry in data_12['values']:
+    entry['datetime'] = datetime.strptime(entry['datetime'], '%Y-%m-%d %H:%M:%S')
 
-##this is the API key for alpha vantage
+# Filter data for entries with today's date
+today = date.today()
+today_entries = [entry for entry in data_12['values'] if entry['datetime'].date() == today]
+
+# Create numpy array with required information
+data_array_12 = np.zeros((len(today_entries), 7), dtype=object)
+for i, entry in enumerate(today_entries):
+    formatted_datetime = entry['datetime'].strftime("%Y-%m-%d (%H:%M)")
+
+    data_array_12[i, 0] = formatted_datetime  # Store date and time at index 0
+    data_array_12[i, 1] = entry['open']
+    data_array_12[i, 2] = entry['high']
+    data_array_12[i, 3] = entry['low']
+    data_array_12[i, 4] = entry['close']
+    data_array_12[i, 5] = entry['volume']
+
+print(data_array_12)
+
+
+
+
+
+
 api_key = os.environ.get('ALPHAVANTAGE_API_KEY') ## this will retreive the API key from the OS
 
 
@@ -45,21 +68,11 @@ for i, date in enumerate(dates):
     data_array[i, 5] = float(date_data['5. volume'])
 
 
-def get_realtime_data(symbol, api_key):
-    url = f'https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol={symbol}&apikey={api_key}'
-    response = requests.get(url)
-    data = response.json()
-
-    if 'Global Quote' in data:
-        return data['Global Quote']
-    else:
-        return None
 
 ## now that we have this data in a numpy array, I want to be able to see the growth of the stock based on the last 24 hours, the last week, the last month, and the last year.
 
 ##calculate the growth of the stock in the last 24 hours
 
-print(data_array)
-print(calculate_percentChange_24hours(data_array, symbol))
 print(plot_candlestick_chart(data_array, symbol))
 print(data_12)
+print(plot_candlestick_chart_12(data_array_12, symbol))
