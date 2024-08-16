@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\stock_backend",
+    "\\stock_backend\\stocks\\migrations",
+    "\\stock_backend\\user_auth"
   ],
-  "SelectedNode": "\\C:\\Users\\z004ymfp\\Source\\Repos\\Learning-new-tools-",
+  "SelectedNode": "\\stock_backend\\user_auth\\models.py",
   "PreviewInSolutionExplorer": false
 }
