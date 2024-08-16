@@ -2,9 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\stock_backend",
-    "\\stock_backend\\stocks\\migrations",
+    "\\stock_backend\\stock_backend",
     "\\stock_backend\\user_auth"
   ],
-  "SelectedNode": "\\stock_backend\\user_auth\\models.py",
+  "SelectedNode": "\\stock_backend\\user_auth\\views.py",
   "PreviewInSolutionExplorer": false
 }
