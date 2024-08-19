@@ -1,4 +1,3 @@
-'''
 from django.shortcuts import render
 from rest_framework import generics
 from .models import CustomUser
@@ -13,14 +12,3 @@ class RegisterView(generics.CreateAPIView):
     serializer_class = UserSerializer
     ## anyone can access the registration page without thier being logged in
     permission_classes = [AllowAny]
-    '''
-    
-from django.http import HttpResponse
-from django.urls import path
-
-def test_view(request):
-    return HttpResponse("Test view is working")
-
-urlpatterns = [
-    path('test/', test_view, name='test'),
-]

@@ -1,9 +1,9 @@
-from django.http import HttpResponse
 from django.urls import path
-
-def test_view(request):
-    return HttpResponse("Test view is working")
+from .views import RegisterView
 
 urlpatterns = [
-    path('test/', test_view, name='test'),
+    # URL pattern for the registration endpoint
+    path('register/', RegisterView.as_view(), name='register'),
+    
+   
 ]
