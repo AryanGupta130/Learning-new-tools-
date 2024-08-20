@@ -3,8 +3,12 @@
     "",
     "\\stock_backend",
     "\\stock_backend\\stock_backend",
-    "\\stock_backend\\user_auth"
+    "\\stock_backend\\user_auth",
+    "\\stock_backend\\user_auth\\static",
+    "\\stock_backend\\user_auth\\static\\css",
+    "\\stock_backend\\user_auth\\templates",
+    "\\stock_backend\\user_auth\\templates\\user_auth"
   ],
-  "SelectedNode": "\\stock_backend\\user_auth\\views.py",
+  "SelectedNode": "\\stock_backend\\user_auth\\urls.py",
   "PreviewInSolutionExplorer": false
 }

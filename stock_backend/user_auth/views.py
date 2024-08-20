@@ -1,11 +1,9 @@
-from django.shortcuts import render
 from rest_framework import generics
 from .models import CustomUser
 from .serializers import UserSerializer
 from rest_framework.permissions import AllowAny
 from django.shortcuts import render, redirect
 from .forms import CustomUserCreationForm, RegisterForm
-from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse
 from django.contrib.auth import login, authenticate
@@ -20,11 +18,9 @@ class RegisterView(generics.CreateAPIView):
     serializer_class = UserSerializer
     ## anyone can access the registration page without thier being logged in
     permission_classes = [AllowAny]
-    
-from django.contrib.auth import authenticate, login
-from django.shortcuts import render, redirect
-from django.contrib import messages
-from .forms import RegisterForm
+
+def login_view(request):
+    return render(request, 'user_auth/login.html')
 
 def register(request):
     if request.method == 'POST':
@@ -36,17 +32,24 @@ def register(request):
 
             # Automatically log in the user after registration
             user = authenticate(username=user.username, password=form.cleaned_data['password'])
+            ## The user has correctly logged in
             if user is not None:
                 login(request, user)
                 messages.success(request, 'Registration successful! Welcome to the site.')
-                return redirect('home')  # Redirect to a home page or any other page after registration
+                return redirect('login')  # Redirect to a home page or any other page after registration\
+            ## the user has not correctly logged in 
+            ## ask to login again
             else:
                 messages.error(request, 'There was an issue logging you in. Please try logging in manually.')
                 return redirect('login')
     else:
         form = RegisterForm()
 
-    return render(request, 'user_auth/registration/register.html', {'form': form})  # Update the path here
+    return render(request, 'user_auth/register.html', {'form': form})  
 
 def home(request):
-    return render(request, 'user_auth/registration/home.html')
+    return render(request, 'user_auth/login.html')
+
+
+
+
