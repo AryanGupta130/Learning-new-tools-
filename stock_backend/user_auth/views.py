@@ -48,7 +48,8 @@ def register(request):
     return render(request, 'user_auth/register.html', {'form': form})  
 
 def home(request):
-    return render(request, 'user_auth/login.html')
+    return render(request, 'user_auth/home.html')  
+
 
 
 

@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+<!-- head data that stores meta data regarding the file itself  --> 
 <head>
+    <!--The file type is static which allows for the file to be linked with another file. in this case a css file-->
     {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +13,7 @@
     <div class="login-container">
         <h1>Login</h1>
         <form method="POST" action="{% url 'login' %}">
+            <!-- Security measure that generates a csrf token. Helps to prevent CSRF attacks-->
             {% csrf_token %}
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>

@@ -1,12 +1,7 @@
 {
   "ExpandedNodes": [
     "",
-    "\\.idea",
-    "\\stock_backend\\user_auth",
-    "\\stock_backend\\user_auth\\static",
-    "\\stock_backend\\user_auth\\static\\css",
-    "\\stock_backend\\user_auth\\templates",
-    "\\stock_backend\\user_auth\\templates\\user_auth"
+    "\\.idea"
   ],
   "SelectedNode": "\\.idea\\Data_analysis.iml",
   "PreviewInSolutionExplorer": false
